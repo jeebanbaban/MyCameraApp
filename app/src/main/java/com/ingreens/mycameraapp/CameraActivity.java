@@ -23,6 +23,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.MediaController;
 import android.widget.Toast;
 import android.widget.VideoView;
 
@@ -338,7 +339,9 @@ public class CameraActivity extends AppCompatActivity{
         try {
             // hide image preview
             imgPreview.setVisibility(View.GONE);
-
+            MediaController mc=new MediaController(this);
+            videoPreview.setMediaController(mc);
+            mc.setAnchorView(videoPreview);
             videoPreview.setVisibility(View.VISIBLE);
             videoPreview.setVideoPath(fileUri.getPath());
             System.out.println("**************************************");
@@ -347,7 +350,7 @@ public class CameraActivity extends AppCompatActivity{
             System.out.println("**************************************");
             System.out.println("**************************************");
             // start playing
-            videoPreview.start();
+//            videoPreview.start();
         } catch (Exception e) {
             e.printStackTrace();
         }
